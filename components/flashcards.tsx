@@ -14,7 +14,11 @@ const Flashcard = ({ flashcard }) => {
         {flashcard.question}
         <Box as="div" className="flashcard-options">
           {flashcard.options.map((option) => {
-            return <div className="flashcard-option">{option}</div>;
+            return (
+              <Box as="div" key={Math.random()} className="flashcard-option">
+                {option}
+              </Box>
+            );
           })}
         </Box>
       </Box>

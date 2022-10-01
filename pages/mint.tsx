@@ -49,7 +49,7 @@ const Mint = () => {
 
   const toast = useToast();
 
-  const [name, setName] = useState<string>("");
+  const [name, setName] = useState<string | null>(null);
   const [title, setTitle] = useState<string>("");
   const [copies, setCopies] = useState<string>("1");
   const [email, setEmail] = useState<string>("");
@@ -70,14 +70,14 @@ const Mint = () => {
   };
 
   useEffect(() => {
-    if (!name && !userInfo) {
+    // if (!name && !userInfo) {
       const _name = userInfo.name;
       const _email = userInfo.email;
       const address = account;
       setName(_name);
       setEmail(_email);
-    }
-  });
+    // }
+  },[]);
 
   useEffect(() => {
     if (cid) {
