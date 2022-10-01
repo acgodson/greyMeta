@@ -71,13 +71,13 @@ const Mint = () => {
 
   useEffect(() => {
     // if (!name && !userInfo) {
-      const _name = userInfo.name;
-      const _email = userInfo.email;
-      const address = account;
-      setName(_name);
-      setEmail(_email);
+    const _name = userInfo.name;
+    const _email = userInfo.email;
+    // const address = account;
+    setName(_name);
+    setEmail(_email);
     // }
-  },[]);
+  }, [userInfo.name, userInfo.email]);
 
   useEffect(() => {
     if (cid) {
