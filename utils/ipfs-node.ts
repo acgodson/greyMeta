@@ -1,4 +1,3 @@
-import ipfsClient from "ipfs-http-client";
 import { INFURA_PROJECT_ID } from "../constants";
 import { INFURA_PROJECT_SECRET } from "../constants";
 import { create } from "ipfs-http-client";
