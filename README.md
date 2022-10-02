@@ -14,7 +14,7 @@ GreyMeta is a decentralized E-learning hub designed to allow the freedom of lear
 
 ## Features
 
-- **Digital Assets** - Study with NFT flashcards in your catalog; cards puplished by others or simply create yours
+- **Digital Assets** - Study with flashcards in your catalog; cards puplished by others or simply create yours
 - **Defi** - Earn Tez tokens as external views/traffic on your published collection increases
 - **Decentralized Storage** - Pin asset metadata securly on IPFS on serverside and control signatures allowed to modify data
 
