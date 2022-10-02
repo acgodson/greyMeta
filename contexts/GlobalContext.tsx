@@ -27,6 +27,11 @@ import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import RPC from "../utils/tezosRPC";
 import { WEB3AUTH_ID } from "../constants";
 
+type storageType = {
+  collections: any;
+  next_id: any;
+};
+
 export interface AuthContext {
   values: {};
 }
@@ -85,6 +90,7 @@ const GlobalProvider = ({ children }) => {
   const [tezosKeys, setTezosKeys] = useState<any | null>(null);
   const [account, setAccount] = useState<string | null>(null);
   const [balance, setBalance] = useState<any | null>(null);
+  const [contract, setContract] = useState<any | null>(null);
 
   //Web3auh Client ID
   const clientId = WEB3AUTH_ID;
@@ -96,6 +102,11 @@ const GlobalProvider = ({ children }) => {
           clientId,
           chainConfig: {
             chainNamespace: CHAIN_NAMESPACES.OTHER,
+            rpcTarget: "https://rpc.kathmandunet.teztnets.xyz/",
+            displayName: "Tezos",
+            blockExplorer: "https://tzstats.com",
+            ticker: "XTZ",
+            tickerName: "Tezos",
           },
         });
 
@@ -172,6 +183,18 @@ const GlobalProvider = ({ children }) => {
     console.log(balance);
   };
 
+  const getContractStorage = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const artifact: any = await rpc.getContractArtifact();
+    if (artifact) {
+      setContract(artifact);
+    }
+  };
+
   useEffect(() => {
     //Get users authenticated profile from web3auth
     if (!userInfo) {
@@ -195,6 +218,12 @@ const GlobalProvider = ({ children }) => {
     }
   });
 
+  useEffect(() => {
+    if (!contract) {
+      getContractStorage();
+    }
+  });
+
   return (
     <GlobalContext.Provider
       value={{
@@ -208,6 +237,7 @@ const GlobalProvider = ({ children }) => {
         setAccount,
         balance,
         setBalance,
+        contract,
       }}
     >
       {children}

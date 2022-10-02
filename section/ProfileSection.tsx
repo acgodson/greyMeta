@@ -25,6 +25,7 @@ import { BiPhoneCall } from "react-icons/bi";
 import Paragraph from "../components/Paragraph";
 import RPC from "../utils/tezosRPC";
 import { GlobalContext, AuthContext } from "../contexts/GlobalContext";
+import { char2Bytes } from "@taquito/utils";
 
 //type userinfoType = Partial<OpenloginUserInfo>;
 
@@ -48,6 +49,7 @@ const ProfileSection = () => {
     setAccount,
     balance,
     setBalance,
+    contract,
   }: any = useContext(GlobalContext);
 
   const login = async () => {
@@ -102,16 +104,34 @@ const ProfileSection = () => {
     const result = await rpc.signAndSendTransaction();
     console.log(result);
   };
+
+  const mint = async () => {
+    if (!provider) {
+      console.log("provider not initialized yet");
+      return;
+    }
+    const rpc = new RPC(provider);
+    const artifact: any = await rpc.getContractArtifact();
+    if (artifact) {
+      await artifact.methods.publish("hash", account, 1).send();
+
+      console.log(artifact.methods.publish());
+
+      // const txRes = await cast.confirmation();
+    }
+  };
+
   const loggedInView = (
     <>
-      <Button 
-      
-      boxShadow="none"
-      opacity="0.6"
-      onClick={signMessage} className="card">
-        Balance {balance ? balance.e  : ""}
-        <Box as="span" fontSize= "12px">
-        STZ
+      <Button
+        boxShadow="none"
+        opacity="0.6"
+        onClick={signMessage}
+        className="card"
+      >
+        Balance {balance ? balance.e : ""}
+        <Box as="span" fontSize="12px">
+          STZ
         </Box>
       </Button>
 
@@ -137,7 +157,7 @@ const ProfileSection = () => {
               size="lg"
             />
             <Heading
-            mb={5}
+              mb={5}
               display={["inherit", "inherit", "none"]}
               sx={{
                 fontFamily: "Pacifico",
@@ -158,7 +178,7 @@ const ProfileSection = () => {
         <Box mt={2}>
           <ButtonGroup h="fit-content">
             <Button
-              onClick={() => navigate("/flashcards")}
+              // onClick={() => navigate("/flashcards")}
               colorScheme="blue"
               boxShadow="none"
               size="sm"
@@ -166,13 +186,15 @@ const ProfileSection = () => {
               h="45px"
               margin={"5px"}
               fontSize="xl"
+              disabled={true}
             >
-              Library
+              Marketplace
             </Button>
 
             <Button
               colorScheme="pink"
-              onClick={() => navigate("/mint")}
+               onClick={() => navigate("/mint")}
+            //  onClick={() => mint()}
               size="sm"
               h="45px"
               py={4}
@@ -180,7 +202,7 @@ const ProfileSection = () => {
               boxShadow="none"
               fontSize="xl"
             >
-              My Catalog
+              Add New
             </Button>
 
             {/* 
