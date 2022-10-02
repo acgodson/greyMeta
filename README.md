@@ -1,4 +1,4 @@
-## Welcome to greyMeta
+# Welcome to greyMeta
 
 GreyMeta is a decentralized E-learning hub designed to allow the freedom of learning and exchange of flashcard collections as digital assets on tezos chain. The experimental project was stirred during the  Metamorphosis 🐛🦋 Hackathon 2022.
 
@@ -21,16 +21,66 @@ GreyMeta is a decentralized E-learning hub designed to allow the freedom of lear
 ## Demo
 
 - [Website]()
-- [Youtube Video]()
-- [Contract Address]()
+- [Video]()
+- [Ligo Contract]()
 
-## Testing
+## Testing Frontend
 
-- Run `yarn install` and `yarn dev` and you're ready to go!
+- Run ``` yarn install ``` and ``` yarn dev ``` and you're ready to go!
 - To setup a web3auth account, refer to [this docs]()
 
 
-## ScreensShot
+## Smart Contract Overview
+
+```
+
+type collection_supply = {
+    owner : address,
+    views : int, 
+    info : string,   
+};
+
+type action =
+| ["Publish", collection_supply]
+| ["Buy", int]
+
+
+type storage = {
+   collections :  big_map<int, collection_supply>,
+   next_id: int,
+   };
+
+```
+
+### Updating the views of each collection
+
+```
+  let updated_collections: big_map<int, collection_supply> =  Big_map.update (parameter, Some(collection_kind_), storage.collections);
+
+```
+
+### Rewarding the  author for each external views
+
+```
+  let receiver : contract<unit> =
+    match ((Tezos.get_contract_opt (owner_address) as option<contract<unit>>), {
+      Some: (contract : contract<unit>) => contract,
+      None: () => (failwith ("Not a contract") as contract<unit>)
+  });
+
+```
+
+```
+ let payoutOperation : operation = Tezos.transaction (unit, Tezos.get_amount (), receiver);
+ 
+```
+
+## Testing and Deploying
+
+ Compile contact, dry run and deploy [online]()
+
+
+## UI ScreensShots
 - Easy Login with  Web3Auth
 
 ![Welcome Page](/screenshots/Easy%20login%20with%20web3auth.png)
