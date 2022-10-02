@@ -94,23 +94,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     const verifySignature = verifyUserSignature(body.bytes, body.sig, body.key);
 
-    //Decrypt IPFS URL
-
-    //Fetch Data from IPFS web3.storage
-    // const cid = "";
-    // let data = await fetch(`$ipfs.io/${cid}`);
-
-    let data = https.request(options, (res) => {
-      let body = "";
-      res.on("data", function (chunk) {
-        body += chunk;
-      });
-      res.on("end", function () {
-        console.log(body);
-      });
-    });
-
-    console.log(data);
 
     return res.status(200).json({ Data: verifySignature });
   }

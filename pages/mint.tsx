@@ -32,7 +32,7 @@ type info = {
   title: string;
 };
 
-const Mint = () => {
+function Mint() {
   const cards = [];
   const {
     userInfo,
@@ -322,7 +322,7 @@ const Mint = () => {
   );
 
   return (
-    <Box>
+    <React.Fragment>
       <Head>
         <title>Mint NFT - GreyMeta</title>
         <meta name="description" content="" />
@@ -330,8 +330,8 @@ const Mint = () => {
       </Head>
 
       <main>{publishedOnIPFS ? OnIPFSView : onCreateView}</main>
-    </Box>
+    </React.Fragment>
   );
-};
+}
 
 export default Mint;

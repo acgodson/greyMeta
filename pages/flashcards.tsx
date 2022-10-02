@@ -34,21 +34,18 @@ function FlashCards() {
 const SAMPLE_CARDS = [
   {
     id: 1,
-    question: "What is 3 + 3 ?",
-    answer: "4",
-    options: ["2", "3", "5", "4"],
+    question: "Meaning of HTML?",
+    answer: "HyperText Mark-Up Language",
   },
   {
     id: 2,
-    question: "What is four + four ?",
-    answer: "8",
-    options: ["2", "3", "8", "4"],
+    question: "Meaning of CSS",
+    answer: "Cascading Style Sheets",
   },
   {
     id: 3,
-    question: "What is six * six ?",
-    answer: "36",
-    options: ["2", "36", "5", "4"],
+    question: "HTML Elementsr",
+    answer: "Open and Closed Tag used to render a content",
   },
 ];
 
