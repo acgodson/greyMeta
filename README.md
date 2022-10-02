@@ -1,6 +1,6 @@
 # Welcome to greyMeta
 
-GreyMeta is a decentralized E-learning hub designed to allow the freedom of learning and exchange of flashcard collections as digital assets on tezos chain. The experimental project was stirred during the  Metamorphosis 🐛🦋 Hackathon 2022.
+GreyMeta is a decentralized E-learning hub designed to allow the freedom of learning and exchange of flashcard collections as digital assets on tezos chain. The experimental project was began the  Metamorphosis 🐛🦋 Hackathon 2022.
 
 
 ## Built with
