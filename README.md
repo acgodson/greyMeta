@@ -20,9 +20,9 @@ GreyMeta is a decentralized E-learning hub designed to allow the freedom of lear
 
 ## Demo
 
+
+- [Onboardng ideo]()
 - [Website]()
-- [Video]()
-- [Ligo Contract]()
 
 ## Testing Frontend
 

@@ -8,10 +8,6 @@ const auth =
     "base64"
   );
 
-// client.pin.add('QmeGAVddnBSnKc1DLE7DLV9uuTqo5F7QbaveTjr45JUdQn').then((res) => {
-//     console.log(res);
-// });
-
 const ipfsNode = () => {
   return create({
     host: "ipfs.infura.io",

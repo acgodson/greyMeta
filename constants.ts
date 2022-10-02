@@ -8,3 +8,6 @@ export const INFURA_PROJECT_SECRET = "";
 export const RPC_URL = "";
 export const WEB3AUTH_ID = "BNZzYqpc0HYk-9hbYbBVLwYTf7cue29jY27n0fkqEg5B_hkwPGbwrBj1vuL8EyMMB8_Ebfe4iY37spXj-mwg9eI";
 export const Contract = ""; // address
+export const CONTRACT = "KT1SW6BtUxQnHP4RaSu2B767WWPYGKCeWh8F"; // address
+
+

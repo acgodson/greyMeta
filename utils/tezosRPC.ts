@@ -2,13 +2,21 @@
 import * as tezosCrypto from "@tezos-core-tools/crypto-utils";
 import { SafeEventEmitterProvider } from "@web3auth/base";
 import { TezosToolkit } from "@taquito/taquito";
-import { hex2buf } from "@taquito/utils";
+import { bytes2Char, char2Bytes, hex2buf } from "@taquito/utils";
 import { InMemorySigner } from "@taquito/signer";
+import { AnyCnameRecord } from "dns";
+import { type } from "os";
+import { CONTRACT } from "../constants";
 
-const tezos = new TezosToolkit("https://rpc.ghostnet.teztnets.xyz");
+const tezos = new TezosToolkit("https://rpc.kathmandunet.teztnets.xyz/");
 
 // interface goat {
 //      utils: { seedToKeyPair: (arg0: Uint8Array) => any; }; }
+
+type userNftType = { tokenId: number; ipfsHash: string }[];
+type newNftType =
+  | undefined
+  | { imageHash: string; metadataHash: string; opHash: string };
 
 export default class tezosRPC {
   private provider: SafeEventEmitterProvider;
@@ -81,13 +89,6 @@ export default class tezosRPC {
       // example address.
       const address = "tz1dHzQTA4PGBk2igZ3kBrDsVXuvHdN8kvTQ";
 
-      // NOTE: The account which is used to send tezos shoudld have some balance for this transaction to go through.
-      // If there is no balance, then we will receive an error - "implicit.empty_implicit_contract"
-      // To solve this error, use a faucet account to send some tzs to the account.
-      // Alternate solution:
-      // 1. Use this link: https://tezostaquito.io/docs/making_transfers#transfer-from-an-implicit-tz1-address-to-a-tz1-address
-      // 2. Modify the address and use the pkh key extracted from web3auth seed in the live code editor and click run code.
-      // 3. Check balance in the account and have some fun.
       const op = await tezos.wallet
         .transfer({
           to: address,
@@ -97,6 +98,70 @@ export default class tezosRPC {
 
       const txRes = await op.confirmation();
       return txRes;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  getContractArtifact = async () => {
+    try {
+      await this.setProvider();
+      const contract = await tezos.wallet.at(CONTRACT);
+      const store: any = contract;
+
+      //     Tezos.contract
+      // .at('KT1GJ5dUyHiaj7Uuc8gqfsbdv5tTbEH3fiRP')
+      // .then((c) => {
+      //   let methods = c.parameterSchema.ExtractSignatures();
+      //   println(JSON.stringify(methods, null, 2));
+      // })
+      // .catch((error) => console.log(`Error: ${error}`));
+
+      if (store) {
+        return store;
+      }
+
+      // if (nftStorage) {
+      //   console.log(nftStorage);
+      // }
+
+      // const getTokenIds = await nftStorage.reverse.legder.get(address);
+      // if (getTokenIds) {
+      //   const userNfts : userNftType = await Promise.all([
+      //     getTokenIds.map(async (id) => {
+      //       const tokenId = id.toNumber();
+      //       const metadata = await nftStorage.metadata.get(tokenId);
+      //       const tokenInfoBytes = metadata.token.info.get("");
+      //       const tokenInfo = bytes2Char(tokenInfoBytes);
+      //       return {
+      //         tokenId,
+      //         ipfsHash:
+      //           tokenInfo.slice(0, 7) === "ipfs://"
+      //             ? tokenInfoBytes.slice(7)
+      //             : null,
+      //       };
+      //     }),
+      //   ]);
+    } catch (error) {
+      return error;
+    }
+  };
+
+  uploadNFT = async () => {
+    try {
+      await this.setProvider();
+      const contract = await tezos.wallet.at(CONTRACT);
+      // const op = await contract.methods
+      //   .mint(char2Bytes("ipfs://" + https://ipfs.io/ipfs/QmVrQN95j6Nbv3MxJpibRx5XDFtAvQqbwfNSnN6EdfdR7c), userAddress)
+      //   .send();
+      // console.log("Op hash:", op.opHash);
+      // await op.confirmation();
+
+      // const newNft = {
+      //   imageHash: data.msg.imageHash,
+      //   metadataHash: data.msg.metadataHash,
+      //   opHash: op.opHash,
+      // };
     } catch (error) {
       return error;
     }
