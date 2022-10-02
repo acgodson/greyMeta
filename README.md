@@ -7,10 +7,10 @@ GreyMeta is a decentralized E-learning hub designed to allow the freedom of lear
 
 - [NextJS]() - Client Framework
 - [Chakra UI]() - Styling
-- [Web3Auth]() - User Friendly Authentication
-- [jLigo]() - Smart Contract
-- [Taquito]() - Smart Contract interaction and signature
-- [IPFS and Infura]() - Decentralized Storage
+- [Web3Auth](https://web3auth.io/docs/connect-blockchain/tezos) - User Friendly Authentication
+- [jLigo](https://opentezos.com/ligo/installation/) - Smart Contract
+- [Taquito](https://tezostaquito.io/) - Smart Contract interaction and signature
+- [IPFS and Infura](https://infura.io/) - Decentralized Storage
 
 ## Features
 
@@ -21,13 +21,13 @@ GreyMeta is a decentralized E-learning hub designed to allow the freedom of lear
 ## Demo
 
 
-- [Onboardng ideo]()
-- [Website]()
+- [Onboardng Video](https://youtu.be/_U-DATvvCZg)
+- [Website](https//greymeta1.web.app)
 
 ## Testing Frontend
 
 - Run ``` yarn install ``` and ``` yarn dev ``` and you're ready to go!
-- To setup a web3auth account, refer to [this docs]()
+- To setup a web3auth account, refer to [this docs](https://web3auth.io/docs/connect-blockchain/tezos)
 
 
 ## Smart Contract Overview
@@ -80,7 +80,7 @@ type storage = {
 
 ## Testing and Deploying
 
- Compile contact, dry run and deploy [online]()
+ Compile [Contract](/contracts/course.ligo) written in Ligo, dry run and deploy [online](https://ide.ligolang.org/)
 
 
 ## UI ScreensShots
