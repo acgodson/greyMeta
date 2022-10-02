@@ -1,6 +1,6 @@
 # Welcome to greyMeta
 
-GreyMeta is a decentralized E-learning hub designed to allow the freedom of learning and exchange of flashcard collections as digital assets on tezos chain. The experimental project was began the  Metamorphosis 🐛🦋 Hackathon 2022.
+GreyMeta is a decentralized E-learning hub designed to allow the freedom of learning and exchange of flashcard collections as digital assets on tezos chain. The experimental project started during the  Metamorphosis 🐛🦋 Hack 2022.
 
 
 ## Built with
@@ -10,7 +10,7 @@ GreyMeta is a decentralized E-learning hub designed to allow the freedom of lear
 - [Web3Auth]() - User Friendly Authentication
 - [jLigo]() - Smart Contract
 - [Taquito]() - Smart Contract interaction and signature
-- [IPFS]() - Decentralized Storage
+- [IPFS and Infura]() - Decentralized Storage
 
 ## Features
 
@@ -31,6 +31,9 @@ GreyMeta is a decentralized E-learning hub designed to allow the freedom of lear
 
 
 ## Smart Contract Overview
+
+- Contract address : KT1SW6BtUxQnHP4RaSu2B767WWPYGKCeWh8F
+
 
 ```
 
@@ -59,7 +62,7 @@ type storage = {
 
 ```
 
-### Rewarding the  author for each external views
+### Rewarding the  author for each external view
 
 ```
   let receiver : contract<unit> =
@@ -96,7 +99,6 @@ type storage = {
 ![practice](/screenshots/cards.png)
 
 
-## Default Contract Storage
 
 ## Team
 
