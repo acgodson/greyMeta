@@ -22,7 +22,7 @@ GreyMeta is a decentralized E-learning hub designed to allow the freedom of lear
 
 
 - [Onboardng Video](https://youtu.be/_U-DATvvCZg)
-- [Website](https//greymeta1.web.app)
+- [Website](https://greymeta1.web.app)
 
 ## Testing Frontend
 
